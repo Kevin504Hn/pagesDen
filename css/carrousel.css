@@ -1,0 +1,49 @@
+
+.carousel {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: calc(20px + 80px); /* Ajusta según la altura de tu footer */
+    width: 80%;
+    max-width: 1920px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
