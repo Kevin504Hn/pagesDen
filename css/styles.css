@@ -4,16 +4,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
 }
 
-body {
+html, body {
     background-color: #fbf9f8 !important;
+    height: 100%; /* Asegura que el body ocupe toda la altura */
+    margin: 0; /* Elimina el margen por defecto */
 }
 
 .container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -70,10 +73,20 @@ header .nav-div {
     border-radius: 8px;
 }
 
+.carousel {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 80px; /* Asegúrate de que sea igual o mayor a la altura del footer */
+    width: 80%;
+    max-width: 1920px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
 
 footer {
+    margin-top: auto;
     text-align: center;
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -86,10 +99,7 @@ footer {
     padding: 20px;
 }
 
-
-
 @media (min-width: 1400px) {
-
     .container,
     .container-lg,
     .container-md,
@@ -101,7 +111,6 @@ footer {
 }
 
 @media (min-width: 1200px) {
-
     .container,
     .container-lg,
     .container-md,
@@ -112,7 +121,6 @@ footer {
 }
 
 @media (min-width: 992px) {
-
     .container,
     .container-lg,
     .container-md,
@@ -122,7 +130,6 @@ footer {
 }
 
 @media (min-width: 768px) {
-
     .container,
     .container-md,
     .container-sm {
@@ -131,7 +138,6 @@ footer {
 }
 
 @media (min-width: 576px) {
-
     .container,
     .container-sm {
         max-width: 100% !important;

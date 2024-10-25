@@ -1,15 +1,13 @@
-
 .carousel {
     position: relative;
     margin-top: 20px;
-    margin-bottom: calc(20px + 80px); /* Ajusta según la altura de tu footer */
+    margin-bottom: 60px; /* Ajusta según la altura de tu footer */
     width: 80%;
+    max-height: 600px;
     max-width: 1920px;
-    margin: auto;
     overflow: hidden;
     border-radius: 10px;
 }
-
 
 .carousel-container {
     display: flex;
@@ -46,4 +44,31 @@
 
 .next {
     right: 10px;
+}
+
+.carousel {
+    position: relative; /* Hacer que el contenedor sea relativo */
+    overflow: hidden; /* Ocultar el desbordamiento */
+}
+
+.carousel-indicators {
+    position: absolute; /* Posicionar absolutamente */
+    bottom: 10px; /* Espacio desde el fondo */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Ajustar el centrado */
+    display: flex; /* Mostrar en línea */
+}
+
+.indicator {
+    width: 10px; /* Ancho del punto */
+    height: 10px; /* Alto del punto */
+    background-color: #bbb; /* Color de los puntos inactivos */
+    border-radius: 50%; /* Hace que los puntos sean circulares */
+    margin: 0 5px; /* Espacio entre los puntos */
+    cursor: pointer; /* Cambia el cursor a mano cuando pasa sobre el punto */
+    transition: background-color 0.3s; /* Efecto de transición para el cambio de color */
+}
+
+.indicator.active {
+    background-color: #717171; /* Color del punto activo */
 }
