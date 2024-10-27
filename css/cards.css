@@ -1,43 +1,157 @@
- /* Estilos para las tarjetas y el efecto parallax */
- .card-container {
+.card-container {
     display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en pantallas pequeñas */
     justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espacio uniforme entre tarjetas */
+    padding: 20px;
     margin-top: 20px;
-    perspective: 1000px; /* Para el efecto parallax */
+    perspective: 1000px;
 }
 
 .card {
-    margin: 40px;
-    width: 240px;
-    height: 300px;
+    flex: 0 1 300px; /* Flex-basis de 300px, permite encogerse pero no crecer */
+    min-width: 240px; /* Ancho mínimo para mantener la legibilidad */
+    max-width: 100%; /* Evita que la tarjeta sea más ancha que su contenedor */
+    height: 380px; /* Altura fija para mantener consistencia */
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(204, 204, 204, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     cursor: pointer;
-    transform-style: preserve-3d; /* Para el efecto parallax */
+    transform-style: preserve-3d;
+    overflow: hidden;
+    position: relative;
 }
 
 .card:hover {
-    transform: translateZ(30px); /* Efecto de profundidad al pasar el mouse */
+    transform: translateZ(30px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilos adicionales para las tarjetas */
-.card h3 {
-    text-align: center;
-    font-size: 16px !important;
-    letter-spacing: 0.2em;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.card .card-img{
+.card .card-img {
     width: 100%;
     height: 70%;
     overflow: hidden;
+    position: relative;
 }
-.card p {
-    padding: 10px;
+
+.card .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.05);
+}
+
+.card h3 {
     text-align: center;
+    font-size: 16px !important;
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: 0.2em;
+    padding: 15px 10px 5px;
+    color: #333;
+    margin: 0;
+}
+
+.card p {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    .card-container {
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .card {
+        flex: 0 1 280px;
+        height: 360px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .card {
+        flex: 0 1 calc(50% - 20px);
+        height: 340px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card {
+        flex: none;
+        width: calc(100% - 30px);
+        margin: 15px auto;
+        height: 320px;
+    }
+
+    .card h3 {
+        font-size: 14px !important;
+        padding: 10px 5px 5px;
+    }
+
+    .card p {
+        padding: 5px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Optimizaciones para dispositivos táctiles */
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+    }
+
+    .card {
+        transform: none !important;
+    }
+}
+
+/* Animación de carga */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: cardFadeIn 0.6s ease-out forwards;
+}
+
+/* Ajuste para diferentes velocidades de animación */
+.card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.6s;
 }
