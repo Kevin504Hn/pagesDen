@@ -9,6 +9,15 @@
     --gold-light: #d4af37;
     --gold-dark: #996515;
     --gold-gradient: linear-gradient(135deg, #d4af37, #996515);
+    --transition-speed: 0.3s;
+}
+
+/* Detectar si el usuario prefiere reducir el movimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 .hero {
@@ -32,7 +41,6 @@
     left: 0;
     right: 0;
     height: 4px;
-    /*background: var(--gold-gradient);*/
 }
 
 .hero h1 {
@@ -65,9 +73,12 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
     position: relative;
     overflow: hidden;
+    /* Optimización para dispositivos táctiles */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .card::before {
@@ -80,8 +91,11 @@
     background: var(--gold-gradient);
 }
 
-.card:hover {
-    transform: translateY(-10px);
+/* Ajuste de hover para dispositivos táctiles */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-10px);
+    }
 }
 
 .card h3 {
@@ -132,10 +146,14 @@
     padding: 2rem;
     background: linear-gradient(145deg, #ffffff, #f9f9f9);
     border-radius: 10px;
-    transition: all 0.3s ease;
+    transition: transform var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
     border: 1px solid rgba(212, 175, 55, 0.1);
     position: relative;
     overflow: hidden;
+    /* Optimización para dispositivos táctiles */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .value-item::before {
@@ -147,12 +165,28 @@
     bottom: 0;
     background: var(--gold-gradient);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-speed) ease;
     z-index: 1;
 }
 
-.value-item:hover::before {
-    opacity: 0.1;
+/* Ajuste de hover para dispositivos táctiles */
+@media (hover: hover) {
+    .value-item:hover::before {
+        opacity: 0.1;
+    }
+
+    .value-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* Versión touch para dispositivos móviles */
+@media (hover: none) {
+    .value-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
 }
 
 .value-item::after {
@@ -163,11 +197,6 @@
     width: 100%;
     height: 3px;
     background: var(--gold-gradient);
-}
-
-.value-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
 }
 
 .value-item h4 {
@@ -200,5 +229,15 @@
 
     .content {
         padding: 2rem 1rem;
+    }
+    
+    /* Optimizaciones adicionales para móvil */
+    .card, .value-item {
+        will-change: transform;
+    }
+    
+    /* Reducir la intensidad de las sombras en móvil */
+    .card {
+        box-shadow: 0 5px 10px rgba(0,0,0,0.08);
     }
 }
