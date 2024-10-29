@@ -14,14 +14,14 @@
     --scale-amount-mobile: 1.02;
 }
 
-/* Detectar si el usuario prefiere reducir el movimiento */
+/* Detectar si el usuario prefiere reducir el movimiento 
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
         transition: none !important;
     }
 }
-
+*/
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('/api/placeholder/1920/1080');
