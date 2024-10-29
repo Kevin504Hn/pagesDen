@@ -2,26 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 :root {
     --gold-light: #d4af37;
     --gold-dark: #996515;
     --gold-gradient: linear-gradient(135deg, #d4af37, #996515);
-    --transition-speed: 0.3s;
-    --scale-amount: 1.05;
-    --scale-amount-mobile: 1.02;
 }
 
-/* Detectar si el usuario prefiere reducir el movimiento 
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-*/
+/* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('/api/placeholder/1920/1080');
@@ -36,58 +26,44 @@
     position: relative;
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-}
-
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 600;
 }
 
 .hero p {
     font-size: 1.5rem;
     max-width: 800px;
     margin: 0 auto;
+    font-weight: 400;
 }
 
+/* Content Section */
 .content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
 }
 
+/* Mission Vision Section */
 .mission-vision {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     margin-top: 3rem;
 }
-
 
 .card {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all var(--transition-speed) ease;
     position: relative;
-    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    will-change: transform, background-color;
-}
-
-/* Añadimos clase específica para el estado activo touch */
-.card.touch-active {
-    transform: scale(var(--scale-amount-mobile));
-    background-color: rgba(212, 175, 55, 0.1);
 }
 
 .card::before {
@@ -100,39 +76,22 @@
     background: var(--gold-gradient);
 }
 
-/* Efectos hover para desktop */
-@media (hover: hover) {
-    .card:hover {
-        transform: translateY(-10px);
-        background-color: rgba(212, 175, 55, 0.05);
-    }
-}
-
-/* Efectos touch para móvil */
-@media (hover: none) {
-    .card {
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    
-    .card:active {
-        transform: scale(var(--scale-amount-mobile));
-        background-color: rgba(212, 175, 55, 0.1);
-    }
-}
-
 .card h3 {
     color: var(--gold-dark);
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
+    font-weight: 500;
 }
 
 .card p {
     color: #666;
     line-height: 1.6;
     text-align: justify;
+    font-size: 1.1rem;
 }
 
+/* Values Section */
 .values {
     margin-top: 4rem;
     text-align: center;
@@ -144,6 +103,7 @@
     margin-bottom: 2rem;
     position: relative;
     display: inline-block;
+    font-weight: 600;
 }
 
 .values h2::after {
@@ -166,80 +126,59 @@
 
 .value-item {
     padding: 2rem;
-    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    background: white;
     border-radius: 10px;
-    transition: all var(--transition-speed) ease;
-    border: 1px solid rgba(212, 175, 55, 0.1);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    will-change: transform, background-color;
-}
-
-/* Añadimos clase específica para el estado activo touch */
-.value-item.touch-active {
-    transform: scale(var(--scale-amount-mobile));
-    background-color: rgba(212, 175, 55, 0.1);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-}
-
-.value-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gold-gradient);
-    opacity: 0;
-    transition: opacity var(--transition-speed) ease;
-    z-index: 1;
-}
-
-/* Efectos hover para desktop */
-@media (hover: hover) {
-    .value-item:hover {
-        transform: scale(var(--scale-amount));
-        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-    }
-
-    .value-item:hover::before {
-        opacity: 0.1;
-    }
-}
-
-/* Efectos touch para móvil */
-@media (hover: none) {
-    .card, .value-item {
-        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    }
-}
-
-.value-item::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gold-gradient);
 }
 
 .value-item h4 {
     color: var(--gold-dark);
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    position: relative;
-    z-index: 2;
+    font-weight: 500;
 }
 
 .value-item p {
     color: #666;
-    position: relative;
-    z-index: 2;
+    font-size: 1.1rem;
 }
 
+/* Hover effects for desktop */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-10px);
+        background-color: rgba(212, 175, 55, 0.05);
+    }
+
+    .value-item:hover {
+        transform: scale(1.05);
+        background-color: rgba(212, 175, 55, 0.05);
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* Touch effects for mobile */
+@media (hover: none) {
+    .card, .value-item {
+        transition: all 0.2s ease;
+    }
+    
+    .card:active {
+        transform: scale(1.02);
+        background-color: rgba(212, 175, 55, 0.1);
+    }
+
+    .value-item:active {
+        transform: scale(1.02);
+        background-color: rgba(212, 175, 55, 0.1);
+        box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -257,12 +196,16 @@
     .content {
         padding: 2rem 1rem;
     }
-    
-    .card, .value-item {
-        will-change: transform, background-color;
+
+    .card h3 {
+        font-size: 1.8rem;
     }
-    
-    .card {
-        box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+
+    .values h2 {
+        font-size: 2rem;
+    }
+
+    .value-item h4 {
+        font-size: 1.3rem;
     }
 }
