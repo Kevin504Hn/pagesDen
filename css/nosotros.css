@@ -10,6 +10,8 @@
     --gold-dark: #996515;
     --gold-gradient: linear-gradient(135deg, #d4af37, #996515);
     --transition-speed: 0.3s;
+    --scale-amount: 1.05;
+    --scale-amount-mobile: 1.02;
 }
 
 /* Detectar si el usuario prefiere reducir el movimiento */
@@ -73,12 +75,12 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
     position: relative;
     overflow: hidden;
-    /* Optimización para dispositivos táctiles */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    will-change: transform, background-color;
 }
 
 .card::before {
@@ -91,10 +93,23 @@
     background: var(--gold-gradient);
 }
 
-/* Ajuste de hover para dispositivos táctiles */
+/* Efectos hover para desktop */
 @media (hover: hover) {
     .card:hover {
         transform: translateY(-10px);
+        background-color: rgba(212, 175, 55, 0.05);
+    }
+}
+
+/* Efectos touch para móvil */
+@media (hover: none) {
+    .card {
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    
+    .card:active {
+        transform: scale(var(--scale-amount-mobile));
+        background-color: rgba(212, 175, 55, 0.1);
     }
 }
 
@@ -146,14 +161,13 @@
     padding: 2rem;
     background: linear-gradient(145deg, #ffffff, #f9f9f9);
     border-radius: 10px;
-    transition: transform var(--transition-speed) ease,
-                box-shadow var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
     border: 1px solid rgba(212, 175, 55, 0.1);
     position: relative;
     overflow: hidden;
-    /* Optimización para dispositivos táctiles */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    will-change: transform, background-color;
 }
 
 .value-item::before {
@@ -169,23 +183,28 @@
     z-index: 1;
 }
 
-/* Ajuste de hover para dispositivos táctiles */
+/* Efectos hover para desktop */
 @media (hover: hover) {
+    .value-item:hover {
+        transform: scale(var(--scale-amount));
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+    }
+
     .value-item:hover::before {
         opacity: 0.1;
     }
-
-    .value-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-    }
 }
 
-/* Versión touch para dispositivos móviles */
+/* Efectos touch para móvil */
 @media (hover: none) {
+    .value-item {
+        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
     .value-item:active {
-        transform: scale(0.98);
-        transition: transform 0.1s ease;
+        transform: scale(var(--scale-amount-mobile));
+        background-color: rgba(212, 175, 55, 0.1);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
     }
 }
 
@@ -231,12 +250,10 @@
         padding: 2rem 1rem;
     }
     
-    /* Optimizaciones adicionales para móvil */
     .card, .value-item {
-        will-change: transform;
+        will-change: transform, background-color;
     }
     
-    /* Reducir la intensidad de las sombras en móvil */
     .card {
         box-shadow: 0 5px 10px rgba(0,0,0,0.08);
     }
