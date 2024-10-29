@@ -39,6 +39,9 @@
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Organizamos el contenido verticalmente */
+    height: 100%; /* Aseguramos que todas las tarjetas tengan la misma altura */
 }
 
 .category-card:hover {
@@ -65,6 +68,9 @@
 
 .category-content {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Hace que el contenido ocupe todo el espacio disponible */
 }
 
 .category-content h3 {
@@ -87,7 +93,8 @@
 .services-list {
     list-style: none;
     padding: 0;
-    margin-bottom: 25px;
+    margin-bottom: auto; /* Empuja el botón hacia abajo */
+    flex-grow: 1; /* Permite que la lista ocupe el espacio disponible */
 }
 
 .services-list li {
@@ -107,6 +114,7 @@
 }
 
 .category-btn {
+    margin-top: auto; /* Asegura que el botón esté al final */
     display: block;
     width: 100%;
     padding: 12px;
