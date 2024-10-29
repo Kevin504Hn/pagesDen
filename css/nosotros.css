@@ -70,6 +70,7 @@
     margin-top: 3rem;
 }
 
+
 .card {
     background: white;
     padding: 2rem;
@@ -81,6 +82,12 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     will-change: transform, background-color;
+}
+
+/* Añadimos clase específica para el estado activo touch */
+.card.touch-active {
+    transform: scale(var(--scale-amount-mobile));
+    background-color: rgba(212, 175, 55, 0.1);
 }
 
 .card::before {
@@ -170,6 +177,13 @@
     will-change: transform, background-color;
 }
 
+/* Añadimos clase específica para el estado activo touch */
+.value-item.touch-active {
+    transform: scale(var(--scale-amount-mobile));
+    background-color: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
 .value-item::before {
     content: '';
     position: absolute;
@@ -197,14 +211,8 @@
 
 /* Efectos touch para móvil */
 @media (hover: none) {
-    .value-item {
+    .card, .value-item {
         transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .value-item:active {
-        transform: scale(var(--scale-amount-mobile));
-        background-color: rgba(212, 175, 55, 0.1);
-        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
     }
 }
 
