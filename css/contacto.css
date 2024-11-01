@@ -139,6 +139,25 @@ body {
     resize: vertical;
 }
 
+/* Estilos para el select */
+.form-group select {
+    width: 100%;
+    padding: clamp(0.6rem, 1.5vw, 0.8rem);
+    border: 2px solid #e0e0e0;
+    border-radius: clamp(4px, 1vw, 8px);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: #333;
+    appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
+}
+
+.form-group select:focus {
+    border-color: var(--gold-light);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
 /* Button Responsive */
 .submit-btn {
     width: 100%;
